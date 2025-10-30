@@ -1,5 +1,6 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Smartphone, Play, Palette, Zap, SlidersHorizontal, Code2, Gauge, Network, MapPin, Users, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 export const Portfolio = () => {
   const projects = [
@@ -59,6 +60,22 @@ export const Portfolio = () => {
     },
   ];
 
+  const showcaseSections = [
+    { icon: Sparkles, title: "Interactive Project Showcase", color: "from-blue-500 to-cyan-500" },
+    { icon: Smartphone, title: "Device Mockup Preview (Swipeable Screens)", color: "from-purple-500 to-pink-500" },
+    { icon: Play, title: "Live App Demo Preview (Flutter Web Embed)", color: "from-green-500 to-teal-500" },
+    { icon: Palette, title: "App UI Animation Gallery", color: "from-orange-500 to-red-500" },
+    { icon: SlidersHorizontal, title: "Before / After App Redesign Slider", color: "from-cyan-500 to-blue-500" },
+    { icon: Zap, title: "UI Interaction Playground", color: "from-yellow-500 to-orange-500" },
+    { icon: Code2, title: "Dark / Light Theme Toggle Showcase", color: "from-indigo-500 to-purple-500" },
+    { icon: Code2, title: "Mobile UI Component Library", color: "from-pink-500 to-rose-500" },
+    { icon: Gauge, title: "App Performance Visualization (FPS / Smooth Animations)", color: "from-emerald-500 to-green-500" },
+    { icon: Network, title: "Architecture & State Management Diagram", color: "from-blue-500 to-indigo-500" },
+    { icon: MapPin, title: "App Flow Demo (Onboarding → Home → Checkout)", color: "from-violet-500 to-purple-500" },
+    { icon: Users, title: "User Journey Timeline", color: "from-teal-500 to-cyan-500" },
+    { icon: Sparkles, title: "Feature Highlight Cards (with icons & animations)", color: "from-fuchsia-500 to-pink-500" },
+  ];
+
   return (
     <section id="portfolio" className="py-20">
       <div className="container mx-auto px-4">
@@ -71,76 +88,106 @@ export const Portfolio = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group glass-card rounded-xl overflow-hidden hover:scale-105 transition-all duration-300"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20`}></div>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
-              </div>
+        {/* Enhanced Portfolio Sections */}
+        <div className="mb-20">
+          <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+            Advanced <span className="text-primary">Showcase Sections</span>
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {showcaseSections.map((section, index) => (
+              <Card
+                key={index}
+                className="glass-card p-6 hover:scale-105 transition-all duration-300 group cursor-pointer"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${section.color} flex items-center justify-center mb-4 group-hover:animate-glow`}>
+                  <section.icon className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                  {section.title}
+                </h4>
+                <div className="h-1 w-12 bg-gradient-to-r from-primary to-primary/50 rounded-full group-hover:w-full transition-all duration-500"></div>
+              </Card>
+            ))}
+          </div>
+        </div>
 
-              {/* Project Info */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                  {project.description}
-                </p>
+        {/* Project Grid */}
+        <div className="mb-12">
+          <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+            Featured <span className="text-primary">Projects</span>
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className="group glass-card rounded-xl overflow-hidden hover:scale-105 transition-all duration-300"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {/* Project Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20`}></div>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
+                </div>
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full"
+                {/* Project Info */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-3">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                      asChild
                     >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-3">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                    asChild
-                  >
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 gradient-primary text-white"
-                    asChild
-                  >
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Demo
-                    </a>
-                  </Button>
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
+                      </a>
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="flex-1 gradient-primary text-white"
+                      asChild
+                    >
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Demo
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* View More */}
-        <div className="text-center mt-12">
+        <div className="text-center">
           <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
             View All Projects
           </Button>
